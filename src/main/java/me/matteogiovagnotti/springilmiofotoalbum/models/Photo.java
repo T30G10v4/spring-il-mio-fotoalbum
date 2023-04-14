@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
 import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import java.util.Set;
 
@@ -24,7 +25,11 @@ public class Photo {
 
     @Lob
     @Column(length = 16777215)
+    @Nullable
     private byte[] image;
+
+    @NotBlank
+    String url;
 
     @ManyToMany
     @JoinTable(
@@ -71,6 +76,14 @@ public class Photo {
 
     public void setImage(byte[] image) {
         this.image = image;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public Set<Category> getCategories() {

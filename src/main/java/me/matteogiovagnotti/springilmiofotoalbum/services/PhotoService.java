@@ -30,4 +30,27 @@ public class PhotoService {
     public List<Photo> getFilteredPhotos(String keyword) {
         return photoRepository.findByTitleContainingIgnoreCase(keyword);
     }
+
+    public Photo createPhoto(Photo formPhoto) {
+
+        Photo photoToPersist = new Photo();
+        photoToPersist.setDescription(formPhoto.getDescription());
+        photoToPersist.setImage(formPhoto.getImage());
+        photoToPersist.setTitle(formPhoto.getTitle());
+        photoToPersist.setCategories(formPhoto.getCategories());
+        photoToPersist.setVisible(formPhoto.getVisible());
+        photoToPersist.setUrl(formPhoto.getUrl());
+
+        return photoRepository.save(photoToPersist);
+    }
+
+    public boolean deleteById(Integer id) throws PhotoNotFoundException {
+        photoRepository.findById(id).orElseThrow(() -> new PhotoNotFoundException(Integer.toString(id)));
+        try {
+            photoRepository.deleteById(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
