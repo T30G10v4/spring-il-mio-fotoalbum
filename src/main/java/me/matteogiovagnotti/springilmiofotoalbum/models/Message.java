@@ -2,6 +2,7 @@ package me.matteogiovagnotti.springilmiofotoalbum.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDateTime;
 
@@ -15,7 +16,7 @@ public class Message {
     String mail;
     @NotBlank
     String text;
-
+    @Nullable
     LocalDateTime createdAt;
 
     public Integer getId() {
