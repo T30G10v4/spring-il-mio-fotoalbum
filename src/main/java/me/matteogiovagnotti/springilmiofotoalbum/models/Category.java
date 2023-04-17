@@ -8,7 +8,7 @@ import org.hibernate.annotations.OnDeleteAction;
 import java.util.Set;
 
 @Entity
-@Table(name = "caregories")
+@Table(name = "categories")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -110,8 +110,12 @@ public class PhotoController {
 
         }
 
-        Photo updatedPhoto = photoService.updatePhoto(formPhoto, id);
-
+        try {
+            Photo updatedPhoto = photoService.updatePhoto(formPhoto, id);
+            return "redirect:/" + Integer.toString(updatedPhoto.getId());
+        } catch (PhotoNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Photo with id = " + id + " not found");
+        }
 
     }
 

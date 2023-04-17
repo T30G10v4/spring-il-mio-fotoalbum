@@ -14,7 +14,7 @@ import java.util.List;
 public class CategoryService {
 
     @Autowired
-    CategoryRepository categoryRepository;
+    private CategoryRepository categoryRepository;
 
     public List<Category> getAllCategories() {
         return categoryRepository.findAll(Sort.by("name"));

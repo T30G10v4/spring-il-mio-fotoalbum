@@ -44,6 +44,19 @@ public class PhotoService {
         return photoRepository.save(photoToPersist);
     }
 
+    public Photo updatePhoto(Photo formPhoto, Integer id) throws PhotoNotFoundException {
+
+        Photo photoToUpdate = getPhotoById(id);
+        photoToUpdate.setDescription(formPhoto.getDescription());
+        photoToUpdate.setImage(formPhoto.getImage());
+        photoToUpdate.setTitle(formPhoto.getTitle());
+        photoToUpdate.setCategories(formPhoto.getCategories());
+        photoToUpdate.setVisible(formPhoto.getVisible());
+        photoToUpdate.setUrl(formPhoto.getUrl());
+
+        return photoRepository.save(photoToUpdate);
+    }
+
     public boolean deleteById(Integer id) throws PhotoNotFoundException {
         photoRepository.findById(id).orElseThrow(() -> new PhotoNotFoundException(Integer.toString(id)));
         try {

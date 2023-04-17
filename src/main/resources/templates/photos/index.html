@@ -25,7 +25,7 @@
         <tr th:each="photo : ${list}" th:object="${photo}">
 
 
-            <td th:text="*{url}"></td>
+            <td><img th:src="*{url}" th:alt="*{title}"></td>
             <td th:text="*{title}"></td>
             <td th:text="*{visible}"></td>
 

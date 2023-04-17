@@ -10,7 +10,7 @@
 <div class="container">
 
     <form method="POST" th:object="${photo}"
-          th:with="formAction=${edit ? '/edit'+ photo.id : '/create'}"
+          th:with="formAction=${edit ? '/edit/'+ photo.id : '/create'}"
           th:action="@{${formAction}}">
         <div class="mb-3">
             <label for="title" class="form-label">Title*</label>

@@ -14,11 +14,14 @@
         <dt>Title</dt>
         <dd th:text="*{title}"></dd>
         <dt>Image</dt>
-        <dd th:text="*{image}"></dd>
+        <dd><img th:src="*{url}" th:alt="*{title}"></dd>
         <dt>Description</dt>
         <dd th:text="*{description}"></dd>
         <dt>Categories</dt>
-        <dd th:text="*{categories}"></dd>
+        <dd>
+            <span th:each="category : *{categories}" th:text="${category.name} ">, </span>
+        </dd>
+
     </dl>
 
 
